@@ -5,40 +5,44 @@
 
 **Finding Lane Lines on the Road**
 
-The goals / steps of this project are the following:
 * Make a pipeline that finds lane lines on the road
-* Reflect on your work in a written report
+
 
 
 [//]: # (Image References)
 
-[image1]: ./examples/grayscale.jpg "Grayscale"
+[image1]: ./test_images/solidWhiteCurve.jpg "before"
+[image2]: ./test_images_output/solidWhiteCurve.jpg "after"
 
 ---
 
 ### Reflection
 
-### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
+### 1. Create pipeline.
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
+My pipeline consisted of 5 steps. 
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
+1. Convert the images to grayscale
+2. Apply a Gaussian Noise kernel
+3. Canny transform to identify edge lines
+4. Mask the image to only host lines visible
+5. Apply Hough Transform to get lines
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
+In order to draw a single line on the left and right lanes, I modified the draw_lines() function by transform point to first order polynomial
+
+Here is the picture show the transformation from beginning to end result: 
 
 ![alt text][image1]
+![alt text][image2]
 
 
-### 2. Identify potential shortcomings with your current pipeline
+### 2. Shortcoming with my current pipeline
 
 
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
+One potential shortcoming would be my pipeline more stable when dashed lanes on present 
 
 
-### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
+### 3. Possible improvements to my pipeline
 
-Another potential improvement could be to ...
+A possible improvement would be to increase robustness on curvy road situation.
